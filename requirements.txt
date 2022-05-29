@@ -1,5 +1,5 @@
 pip>=19.1
-git+git://github.com/Assadzy/scrapyd-cluster-on-heroku-scrapydweb-app-git.git
+git+git://github.com/my8100/scrapyd-cluster-on-heroku-scrapydweb-app-git.git
 
 pymysql>=0.9.3
 psycopg2>=2.7.7
