@@ -15,20 +15,20 @@ import os
 # Setting SCRAPYDWEB_BIND to '0.0.0.0' or IP-OF-THE-CURRENT-HOST would make
 # ScrapydWeb server visible externally; Otherwise, set it to '127.0.0.1'.
 # The default is '0.0.0.0'.
-#SCRAPYDWEB_BIND = '0.0.0.0'
+SCRAPYDWEB_BIND = '0.0.0.0'
 # Accept connections on the specified port, the default is 5000.
-#SCRAPYDWEB_PORT = 5000
+SCRAPYDWEB_PORT = 5000
 # https://devcenter.heroku.com/articles/runtime-principles#web-servers
 # The port to bind to is assigned by Heroku as the PORT environment variable.
 SCRAPYDWEB_PORT = int(os.environ['PORT'])
 
 # The default is False, set it to True to enable basic auth for the web UI.
-ENABLE_AUTH = True
+ENABLE_AUTH = False
 if os.environ.get('ENABLE_AUTH', 'False') == 'True':
     ENABLE_AUTH = True
 # In order to enable basic auth, both USERNAME and PASSWORD should be non-empty strings.
-USERNAME = 'admin'
-PASSWORD = 'scrapydweb'
+USERNAME = ''
+PASSWORD = ''
 USERNAME = os.environ.get('USERNAME', 'admin')
 PASSWORD = os.environ.get('PASSWORD', 'scrapydweb')
 
@@ -53,11 +53,11 @@ PASSWORD = os.environ.get('PASSWORD', 'scrapydweb')
 #   - it's recommended to pass in a tuple of 5 elements.
 #   - e.g. ('', '', '127.0.0.1', '6800', '') or ('username', 'password', 'localhost', '6801', 'group')
 SCRAPYD_SERVERS = [
-    'calm-meadow-45856.herokuapp.com:80',
-     'admin:Assad@24532@calm-meadow-45856.herokuapp.com:80',
-    #('username', 'password', 'localhost', '6801', 'group'),
+    '127.0.0.1:6800',
+    # 'username:password@localhost:6801#group',
+    ('username', 'password', 'localhost', '6801', 'group'),
 ]
-SCRAPYD_SERVERS = ['SCRAPYD_SERVER_1']
+SCRAPYD_SERVERS = []
 import re
 for k, v in os.environ.items():
     k = k.strip()
@@ -370,5 +370,5 @@ DATA_PATH = os.environ.get('DATA_PATH', '')
 # 'postgres://username:password@127.0.0.1:5432'
 # 'sqlite:///C:/Users/username'
 # 'sqlite:////home/username'
-DATABASE_URL = os.environ.get('DATABASE_URL', 'redis-14958.c299.asia-northeast1-1.gce.cloud.redislabs.com:14958')
+DATABASE_URL = os.environ.get('DATABASE_URL', '')
 DATABASE_URL = DATABASE_URL if DATABASE_URL != 'unset' else ''
